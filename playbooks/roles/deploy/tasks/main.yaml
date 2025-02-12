@@ -13,6 +13,8 @@
     username: "{{ docker_username }}"
     password: "{{ docker_password }}"
   no_log: true
+  become: yes
+  become_user: "{{ username  }}"
 
 - name: Copy docker-compose file
   copy:
@@ -25,3 +27,5 @@
 - name: Run docker-compose up
   community.docker.docker_compose_v2:
     project_src: "/home/{{ username }}/{{ dirname }}"
+  become: yes
+  become_user: "{{ username  }}"
