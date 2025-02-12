@@ -1,0 +1,17 @@
+- hosts: droplets
+  become: true
+  # vars:
+  #   username: "test"
+  #   dirname: "test.com"
+
+  roles:
+    - docker
+    - common
+    - role: deploy
+      # vars:
+      #   domain: "test.com"
+      #   docker_registry: "dcr.bndigital.dev/test"
+      #   database_password: "test"
+      #   docker_username: "sa-test"
+      #   docker_password: "test"
+      #   app_version: "latest"

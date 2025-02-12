@@ -1,0 +1,30 @@
+---
+- name: Add user and add to sudo and docker groups
+  user:
+    name: "{{ username }}"
+    state: present
+    groups: sudo,docker
+    append: yes
+
+- name: Add SSH key for user
+  authorized_key:
+    user: "{{ username }}"
+    key: "{{ lookup('file', ssh_key_path) }}"
+
+- name: Install system dependencies
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+    state: present
+    update_cache: yes
+
+- name: Create directories for the user
+  file:
+    path: "/home/{{ username }}/{{ dirname }}"
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0755

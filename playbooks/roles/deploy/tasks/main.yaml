@@ -1,0 +1,27 @@
+---
+- name: Generate .env file from template
+  template:
+    src: env.j2
+    dest: "/home/{{ username }}/{{ dirname }}/.env"
+    mode: 0600
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
+- name: Log in to Docker registry
+  docker_login:
+    registry: "{{ docker_registry }}"
+    username: "{{ docker_username }}"
+    password: "{{ docker_password }}"
+  no_log: true
+
+- name: Copy docker-compose file
+  copy:
+    src: "{{ role_path }}/files/docker-compose.yaml"
+    dest: "/home/{{ username }}/{{ dirname }}/docker-compose.yaml"
+    mode: '0644'
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
+- name: Run docker-compose up
+  community.docker.docker_compose_v2:
+    project_src: "/home/{{ username }}/{{ dirname }}"
