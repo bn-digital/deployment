@@ -22,7 +22,7 @@ variable "region" {
 variable "image" {
   type        = string
   description = "The image to use for the droplet"
-  default     = "ubuntu-24-10-x64"
+  default     = "ubuntu-24-04-x64"
 }
 
 variable "size" {
