@@ -16,7 +16,7 @@ services:
       - '--certificatesresolvers.letsencrypt.acme.httpchallenge=true'
       - '--entrypoints.http.http.redirections.entrypoint.to=https'
       - '--entrypoints.http.http.redirections.entrypoint.scheme=https'
-      - '--log.level=DEBUG'
+      - '--log.level=INFO'
       - '--entrypoints.http.address=:80'
       - '--entrypoints.https.address=:443'
       - '--providers.docker.exposedbydefault=false'
