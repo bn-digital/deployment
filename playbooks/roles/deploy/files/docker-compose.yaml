@@ -56,6 +56,7 @@ services:
       DATABASE_NAME: ${DATABASE_NAME:-app}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD:-password}
       DOMAIN: ${DOMAIN}
+      HOST: '0.0.0.0'
 
   database:
     image: postgres:15.2
