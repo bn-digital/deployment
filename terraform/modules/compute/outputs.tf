@@ -5,3 +5,7 @@ output "public_ip" {
 output "droplet_id" {
   value = digitalocean_droplet.web.id
 }
+
+output "droplet_urn" {
+  value = digitalocean_droplet.web.urn
+}

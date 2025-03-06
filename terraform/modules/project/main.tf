@@ -3,4 +3,5 @@ resource "digitalocean_project" "my_project" {
   description = "${var.project_name} project"
   purpose     = "Web Application"
   environment = "Production"
+  resources   = var.resources 
 }
